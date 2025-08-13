@@ -1,21 +1,24 @@
-<%- include("header") -%>
-<div id="heading" class="box">
-	<h1><%= listTitle %></h1>
-</div>
-<div class="box">
-	<%newListItems.forEach((item) => {%>
-	    <form action="/delete" method="post">
-			<div class="item">
-				<input type="checkbox" name="checkbox" value="<%= item._id %>" onChange="this.form.submit()" />
-				<p><%= item.name%></p>
-			</div>
-			<input type="hidden" name="listName" value="<%= listTitle %>"></input>
-	    </form>
-	<%});%>
+<%- include("partials/header") -%>
+	<link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+	<div id="heading" class="box">
+		<h1><%= listTitle %></h1>
+	</div>
+	<div class="box">
+		<%newListItems.forEach((item) => {%>
+			<form action="/delete" method="post">
+				<div class="item">
+					<input type="checkbox" name="checkbox" value="<%= item._id %>" onChange="this.form.submit()" />
+					<p><%= item.name%></p>
+				</div>
+				<input type="hidden" name="listName" value="<%= listTitle %>"></input>
+			</form>
+		<%});%>
 
-	<form class="item" action="/" method="post">
-		<input type="text" name="newitem" placeholder="New task" autocomplete="off"/><br>
-		<button type="submit" name="list" value="<%= listTitle %>">+</button>
-	</form>
-</div>
-<%- include("footer") -%>
+		<form class="item" action="/" method="post">
+			<input type="text" name="newitem" placeholder="New task" autocomplete="off"/><br>
+			<button type="submit" name="list" value="<%= listTitle %>">+</button>
+		</form>
+	</div>
+<%- include("partials/footer") -%>
