@@ -20,12 +20,12 @@ h1 {
   margin: 50px auto;
   background: #FFFFFF;
   border-radius: 5px;
-  box-shadow: 3px 5px 8px 3px #111111;
+  box-shadow: 3px 5px 5px 2px #111111;
 }
 
 #heading {
   background-color: #FFFFFF;
-  box-shadow: 3px 5px 8px 3px #111111;
+  box-shadow: 3px 5px 5px 1px #111111;
   text-align: center;
 }
 
