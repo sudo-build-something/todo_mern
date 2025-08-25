@@ -1,6 +1,7 @@
 const Item = require("../models/Item");
 const List = require("../models/List");
 const date = require("../utils/date");
+const auth = require("../config/auth");
 
 const defaultItems = [
   new Item({ name: "Do the dishes" }),
@@ -9,13 +10,18 @@ const defaultItems = [
 ];
 
 exports.getHome = async (req, res) => {
-  const day = date.getDate();
-  const items = await Item.find();
-  if (items.length === 0) {
-    await Item.insertMany(defaultItems);
-    return res.redirect("/");
+  if (req.isAuthenticated()) {
+    const day = date.getDate();
+    const items = await Item.find();
+    if (items.length === 0) {
+      await Item.insertMany(defaultItems);
+      return res.redirect("/");
+    }
+
+    res.render("list", { listTitle: day, newListItems: items });
+  } else {
+    res.redirect("/login");
   }
-  res.render("list", { listTitle: day, newListItems: items });
 };
 
 exports.getCustomList = async (req, res) => {
