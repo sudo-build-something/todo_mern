@@ -1,11 +1,12 @@
+const { isEmail } = require('validator');
 
 exports.validateName = (name) => {
-  const namePattern = /^[A-Za-z]+[\-]?[A-Za-z]$/;
+  const namePattern = /^[A-Za-z]+[\-]?[A-Za-z]+$/;
   return namePattern.test(name);
 };
 
 exports.validateUsername = (username) => {
-  const usernamePattern = /^[A-Za-z0-9_\-.]$/;
+  const usernamePattern = /^[A-Za-z0-9_\-.]{6,}$/;
   return _validateLength(6, 32, username.length) && usernamePattern.test(username);
 };
 
@@ -25,8 +26,7 @@ exports.validatePassword = (password) => {
 };
 
 exports.validateEmail = (email) => {
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailPattern.test(email);
+  return isEmail(email);
 };
 
 var _validateLength = (min, max, length) => {

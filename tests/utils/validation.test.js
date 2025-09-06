@@ -1,33 +1,33 @@
-const validator = require('../../backend/utils/validation');
+const myvalidator = require('../../backend/utils/validation');
 
-describe('Validating weak and incorrect (includes non-printable characters) passwords', () => {
+describe('Validating weak and incorrect passwords', () => {
 
   test('returns false for password without uppercase', () => {
-    expect(validator.validatePassword('abcdef1!')).toBe(false);
+    expect(myvalidator.validatePassword('abcdef1!')).toBe(false);
   });
 
   test('returns false for password without lowercase', () => {
-    expect(validator.validatePassword('ABCDDEF1!')).toBe(false);
+    expect(myvalidator.validatePassword('ABCDDEF1!')).toBe(false);
   });
 
   test('returns false for password without digit', () => {
-    expect(validator.validatePassword('Abcdefgh!')).toBe(false);
+    expect(myvalidator.validatePassword('Abcdefgh!')).toBe(false);
   });
 
   test('returns false for password with a non-printable character', () => {
-    expect(validator.validatePassword('Abcdefgh6¶!')).toBe(false);
+    expect(myvalidator.validatePassword('Abcdefgh6¶!')).toBe(false);
   });
 
   test('returns false for password without a special character', () => {
-    expect(validator.validatePassword('ABCDDEF12')).toBe(false);
+    expect(myvalidator.validatePassword('ABCDDEF12')).toBe(false);
   });
 
   test('returns false for password shorter than 8 characters', () => {
-    expect(validator.validatePassword('Ab1sds!')).toBe(false);
+    expect(myvalidator.validatePassword('Ab1sds!')).toBe(false);
   });
 
   test('returns false for password longer than 64 characters', () => {
-    expect(validator.validatePassword(
+    expect(myvalidator.validatePassword(
         'Ab1!aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
     )).toBe(false);
   });
@@ -35,15 +35,15 @@ describe('Validating weak and incorrect (includes non-printable characters) pass
 
 describe('Validating correct passwords', () => {
     test('returns true for a valid strong password', () => {
-    expect(validator.validatePassword('Abcdef1!')).toBe(true);
+    expect(myvalidator.validatePassword('Abcdef1!')).toBe(true);
   });
 
   test ('returns true for all criteria and length = 8', () => {
-    expect(validator.validatePassword('Abc1234!')).toBe(true);
+    expect(myvalidator.validatePassword('Abc1234!')).toBe(true);
   });
 
   test ('returns true for all criteria and length = 64', () => {
-    expect(validator.validatePassword(
+    expect(myvalidator.validatePassword(
       'Abc1234!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
     )).toBe(true);
   });
@@ -51,22 +51,85 @@ describe('Validating correct passwords', () => {
 
 describe('Validating incorrectly structured names of users', () => {
   test('returns false for containing numbers', () => {
-    expect(validator.validateName("J4son")).toBe(false);
+    expect(myvalidator.validateName("J4son")).toBe(false);
   });
 
   test('returns false for containing special characters besides a hyphen', () => {
-    expect(validator.validateName("Ja$on")).toBe(false);
+    expect(myvalidator.validateName("Ja$on")).toBe(false);
   });
 
   test('returns false for ending in a hyphen', () => {
-    expect(validator.validateName("Ja$on-")).toBe(false);
+    expect(myvalidator.validateName("Ja$on-")).toBe(false);
   });
 
   test('returns false for containing non-printable characters', () => {
-    expect(validator.validateName("¶atrick")).toBe(false);
+    expect(myvalidator.validateName("¶atrick")).toBe(false);
   });
 
   test('returns false for being shorter than 2 characters', () => {
-    expect(validator.validateName("A")).toBe(false);
+    expect(myvalidator.validateName("A")).toBe(false);
+  });
+});
+
+describe('Validating correctly structured names of users', () => {
+  test('returns true for capitalised name', () => {
+    expect(myvalidator.validateName("Jason")).toBe(true);
+  });
+
+  test('returns true for lowercase name', () => {
+    expect(myvalidator.validateName("jason")).toBe(true);
+  });
+
+  test('returns true for hyphenated name', () => {
+    expect(myvalidator.validateName("Bobby-Joe")).toBe(true);
+  });
+
+  test('returns true for 2 letter name', () => {
+    expect(myvalidator.validateName("Jo")).toBe(true);
+  });
+
+});
+
+describe('Validating correct usernames', () => {
+  test('returns true for username meeting all criteria and minimum length', () => {
+    expect(myvalidator.validateUsername('jO-do3')).toBe(true);
+  });
+  
+  test('returns true for username meeting all criteria and maximum length', () => {
+    expect(myvalidator.validateUsername('jO3-jO3-jO3-jO3-jO3-jO3-jO3-jO3-')).toBe(true);
+  });
+
+  test('returns true for username with all allowed special characters', () => {
+    expect(myvalidator.validateUsername('jO3_jO3.jO3-')).toBe(true);
+  });
+});
+
+describe('Validating incorrect usernames', () => {
+  test('returns false for special characters other than "_", "-", "-" and "."', () => {
+    expect(myvalidator.validateUsername("jO3@doe")).toBe(false);
+  });
+
+  test('returns false for whitespaced names', () => {
+    expect(myvalidator.validateUsername('jo3 doe.')).toBe(false);
+  });
+
+  test('returns false for username shorter than minimum length', () => {
+    expect(myvalidator.validateUsername('j-do3')).toBe(false);
+  });
+
+  test('returns false for username longer than maximum length', () => {
+    expect(myvalidator.validateUsername("jO3--jO3-jO3-jO3-jO3-jO3-jO3-jO3-")).toBe(false);
+  });
+});
+
+describe('Validating correct email addresses', () => {
+  test('returns true for valid email', () => {
+    expect(myvalidator.validateEmail('johndoe17@hotmail.com')).toBe(true);
+  });
+});
+
+describe('Validating incorrect email addresses', () => {
+  test('returns false for email starting with special character', () => {
+    expect(myvalidator.validateEmail('@john.doe17@hotmail.com')).toBe(false);
   });
 });
