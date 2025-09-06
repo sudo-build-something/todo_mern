@@ -25,6 +25,8 @@ exports.submitRegister = async (req, res) => {
     if (err) {
       console.log(err);
       return res.redirect("/register");
+    } else {
+      return res.redirect("/login");
     }
   });
 }
