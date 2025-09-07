@@ -6,8 +6,8 @@ exports.validateName = (name) => {
 };
 
 exports.validateUsername = (username) => {
-  const usernamePattern = /^[A-Za-z0-9_\-.]{6,}$/;
-  return _validateLength(6, 32, username.length) && usernamePattern.test(username);
+  const usernamePattern = /^[A-Za-z0-9_\-.]{6,32}$/;
+  return usernamePattern.test(username);
 };
 
 exports.validatePassword = (password) => {

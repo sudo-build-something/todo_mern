@@ -15,22 +15,37 @@
             <div class="form-group">
               <label for="firstname">First Name</label>
               <input type="text" class="form-control" name="firstname">
+              <% if (errors.firstname) { %>
+                <p class="text-danger"><%= errors.firstname %></p>
+              <%} %>
             </div>
             <div class="form-group">
               <label for="lastname">Last Name</label>
               <input type="text" class="form-control" name="lastname">
+              <% if (errors.lastname) { %>
+                <p class="text-danger"><%= errors.lastname %></p>
+              <%} %>
             </div>
             <div class="form-group">
               <label for="username">Username</label>
               <input type="text" class="form-control" name="username">
+              <% if (errors.username) { %>
+                <p class="text-danger"><%= errors.username %></p>
+              <%} %>
             </div>
             <div class="form-group">
               <label for="email">Email</label>
               <input type="email" class="form-control" name="email">
+              <% if (errors.email) { %>
+                <p class="text-danger"><%= errors.email %></p>
+              <%} %>
             </div>
             <div class="form-group">
               <label for="password">Password</label>
               <input type="password" class="form-control" name="password">
+              <% if (errors.password) { %>
+                <p class="text-danger"><%= errors.password %></p>
+              <%} %>
             </div>
             <button type="submit" class="btn btn-dark">Register</button>
           </form>
