@@ -1,18 +1,23 @@
 html {
+  height: 100%;
   background-color: #FFEE8C;
-  /*background-image: -webkit-linear-gradient(65deg, #FF0000 10%, #414141 50%);*/
-  background-repeat: no-repeat;
   font-family: 'helvetica neue';
 }
 
 body {
-  height: 100vh;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: transparent;
 }
 
 h1 {
   color: #000000;
   padding: 10px;
+}
+
+main {
+  background-color: transparent;
 }
 
 .box {
@@ -21,6 +26,11 @@ h1 {
   background: #FFFFFF;
   border-radius: 5px;
   box-shadow: 3px 5px 5px 2px #111111;
+}
+
+.box form button {
+  background-color: #3B060A;
+  color: white;
 }
 
 #heading {
@@ -46,8 +56,32 @@ input:checked+p {
 }
 
 input[type="checkbox"] {
-  accent-color: #ADD8E6;
+  accent-color: #AF0404;
   margin: 20px;
+}
+
+#login-form {
+  padding: 0 50px;
+}
+
+.box h2 {
+  padding: 30px 0 30px 50px;
+}
+
+#login-form button {
+  width: 100%;
+
+}
+
+#login-form button:hover {
+  background-color: #AF0404;
+  color: white;
+}
+
+.box p {
+  font-size: 1rem;
+  padding-left: 30px;
+  font-weight: 400;
 }
 
 p {
@@ -63,19 +97,26 @@ form.item {
   margin-left: 20px;
 }
 
-button {
+.list-btn {
   min-height: 50px;
   width: 50px;
   border-radius: 50%;
   border-color: transparent;
-  background-color: #AF0404;
+  background-color: #3B060A;
   color: #fff;
   font-size: 30px;
   padding-bottom: 6px;
   border-width: 0;
 }
 
-input[type="text"] {
+#login-form .form-group input {
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #3B060A;
+  width: 100%;
+}
+
+form.item input[type="text"] {
   color: black;
   text-align: center;
   height: 60px;
@@ -87,10 +128,20 @@ input[type="text"] {
   width: 313px;
 }
 
-input[type="text"]:focus {
+form.item input[type="text"]:focus {
   outline: none;
   box-shadow: inset 0 -3px 0 #000000;
 }
+
+#login-form .form-group input[type="text"].form-control:focus,
+#login-form .form-group input[type="password"].form-control:focus {
+  outline: none;
+  box-shadow: none !important;
+  border: none;
+  border-bottom: 1px solid #3B060A;
+  background-color: transparent;
+}
+
 
 ::placeholder {
   color: black;
@@ -105,7 +156,15 @@ input[type="text"]:focus {
   color: black;
 }
 
+#register-btn {
+  color: #3B060A;
+}
+#register-btn:hover {
+  color: #AF0404;
+}
+
 footer {
+  background-color: transparent;
   width: 100%;
   text-align: center;
   color: black;
