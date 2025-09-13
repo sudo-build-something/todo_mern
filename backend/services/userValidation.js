@@ -4,23 +4,23 @@ exports.validateRegistrationInput = (body) => {
   const {firstname, lastname, username, email, password } = body;
   const errors = {};
   if (!validator.validateName(firstname)) {
-    errors.firstname = "Must be alphabetic, longer than 2 characters and may be hyphenated.";
+    errors.firstname = "First name must be alphabetic, longer than 2 characters and may be hyphenated.";
   }
 
   if (!validator.validateName(lastname)) {
-    errors.lastname = "Must be alphabetic, longer than 2 characters and may be hyphenated.";
+    errors.lastname = "Last name must be alphabetic, longer than 2 characters and may be hyphenated.";
   }
 
   if (!validator.validateUsername(username)) {
-    errors.username = "Must be alphanumeric, between 6 and 32 characters long and can contain: '-', '.' or '_'.";
+    errors.username = "Username must be alphanumeric, between 3 and 32 characters long and can contain: '-', '.' or '_'.";
   }
   
   if (!validator.validateEmail(email)) {
-    errors.email = "Must be a valid email address.";
+    errors.email = "Email must be a valid email address.";
   }
   
   if (!validator.validatePassword(password)) {
-    errors.password = "Must be alphanumeric, contain upper and lowercase letters, contain special characters and be 8 characters or longer.";
+    errors.password = "Password must be alphanumeric, contain upper and lowercase letters, contain special characters and be 8 characters or longer.";
   }
 
   if (Object.keys(errors).length > 0) {

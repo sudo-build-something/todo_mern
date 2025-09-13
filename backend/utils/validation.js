@@ -6,7 +6,7 @@ exports.validateName = (name) => {
 };
 
 exports.validateUsername = (username) => {
-  const usernamePattern = /^[A-Za-z0-9_\-.]{6,32}$/;
+  const usernamePattern = /^[A-Za-z0-9_\-.]{3,32}$/;
   return usernamePattern.test(username);
 };
 
