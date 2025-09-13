@@ -28,9 +28,10 @@ main {
   box-shadow: 3px 5px 5px 2px #111111;
 }
 
-.box form button {
+.box form button, .modal .btn {
   background-color: #3B060A;
   color: white;
+  border: none;
 }
 
 #heading {
@@ -73,14 +74,14 @@ input[type="checkbox"] {
 
 }
 
-#login-form button:hover {
+#login-form button:hover, .modal .btn:hover {
   background-color: #AF0404;
   color: white;
 }
 
 .box p {
   font-size: 1rem;
-  padding-left: 30px;
+  padding-left: 50px;
   font-weight: 400;
 }
 
@@ -161,6 +162,14 @@ form.item input[type="text"]:focus {
 }
 #register-btn:hover {
   color: #AF0404;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  border-top: none;
 }
 
 footer {
