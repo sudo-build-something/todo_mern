@@ -16,6 +16,16 @@ h1 {
   padding: 10px;
 }
 
+.form-control::placeholder {
+  color: #212529; 
+}
+
+.form-control:focus {
+  box-shadow: none;
+  outline: none;
+  border-color: inherit; /* keeps the original border */
+}
+
 main {
   background-color: transparent;
 }
