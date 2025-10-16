@@ -1,6 +1,6 @@
 html {
   height: 100%;
-  background-color: #FFEE8C;
+  background-color: white;
   font-family: 'helvetica neue';
 }
 
@@ -16,14 +16,34 @@ h1 {
   padding: 10px;
 }
 
+nav .btn:hover {
+  background-color: #AF0404 !important;
+  color: white !important;
+}
+
+nav .btn:focus {
+  box-shadow: none;
+  outline: none;
+  border-color: none;
+}
+
 .form-control::placeholder {
-  color: #212529; 
+  color: #212529;
 }
 
 .form-control:focus {
   box-shadow: none;
   outline: none;
-  border-color: inherit; /* keeps the original border */
+  border-color: inherit;
+}
+
+#sidebarMenu {
+  border-left: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-color: none;
+  background-color: white;
+  box-shadow: 1px 1px 3px 1px #111111;
 }
 
 main {
@@ -33,7 +53,7 @@ main {
 .box {
   max-width: 400px;
   margin: 50px auto;
-  background: #FFFFFF;
+  background: white;
   border-radius: 5px;
   box-shadow: 3px 5px 5px 2px #111111;
 }
@@ -45,7 +65,7 @@ main {
 }
 
 #heading {
-  background-color: #FFFFFF;
+  background-color: white;
   box-shadow: 3px 5px 5px 1px #111111;
   text-align: center;
 }
@@ -81,7 +101,6 @@ input[type="checkbox"] {
 
 #login-form button {
   width: 100%;
-
 }
 
 #login-form button:hover, .modal .btn:hover {
@@ -114,7 +133,7 @@ form.item {
   border-radius: 50%;
   border-color: transparent;
   background-color: #3B060A;
-  color: #fff;
+  color: white;
   font-size: 30px;
   padding-bottom: 6px;
   border-width: 0;
@@ -153,7 +172,6 @@ form.item input[type="text"]:focus {
   background-color: transparent;
 }
 
-
 ::placeholder {
   color: black;
   opacity: 1;
@@ -170,6 +188,7 @@ form.item input[type="text"]:focus {
 #register-btn {
   color: #3B060A;
 }
+
 #register-btn:hover {
   color: #AF0404;
 }
