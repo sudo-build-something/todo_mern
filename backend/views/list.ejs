@@ -1,26 +1,21 @@
-<%- include("partials/header") -%>
-	<link rel="stylesheet" href="styles/styles.css">
-</head>
-<body>
-	<div id="heading" class="box">
-		<h1><%= listTitle %></h1>
-	</div>
-	<div class="box">
-		<%newListItems.forEach((item) => {%>
-			<form action="/delete" method="post">
-				<div class="item">
-					<input type="checkbox" name="checkbox" value="<%= item._id %>" onChange="this.form.submit()" />
-					<p><%= item.name%></p>
-				</div>
-				<input type="hidden" name="listName" value="<%= listTitle %>"></input>
-			</form>
-		<%});%>
+<%- include("partials/mainwindow-head") -%>
+<div id="heading" class="box">
+	<h1><%= listTitle %></h1>
+</div>
+<div class="box">
+	<% newListItems.forEach((item) => { %>
+	<form action="/delete" method="post">
+		<div class="item">
+		<input type="checkbox" name="checkbox" value="<%= item._id %>" onChange="this.form.submit()" />
+		<p><%= item.name %></p>
+		</div>
+		<input type="hidden" name="listName" value="<%= listTitle %>"></input>
+	</form>
+	<% }); %>
 
-		<form class="item" action="/" method="post">
-			<input type="text" name="newitem" placeholder="New task" autocomplete="off"/><br>
-			<button class="list-btn" type="submit" name="list" value="<%= listTitle %>">+</button>
-		</form>
-	</div>
-<%- include("partials/footer") -%>
-</body>
-</html>
+	<form class="item d-flex align-items-center" action="/" method="post">
+		<input type="text" name="newitem" placeholder="New task" autocomplete="off" class="flex-grow-1" />
+		<button class="list-btn ms-2" type="submit" name="list" value="<%= listTitle %>">+</button>
+	</form>
+</div>
+<%- include("partials/mainwindow-footer") -%>

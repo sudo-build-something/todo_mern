@@ -38,12 +38,9 @@ nav .btn:focus {
 }
 
 #sidebarMenu {
-  border-left: none;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-color: none;
+  border: none;
   background-color: white;
-  box-shadow: 1px 1px 3px 1px #111111;
+  box-shadow: 0px 0px 1px 1px #111111;
 }
 
 main {
